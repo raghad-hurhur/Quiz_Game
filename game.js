@@ -1,8 +1,155 @@
-// ========================================
-// الأسئلة
-// ========================================
+/* ========================================
+   GET SAVED DATA
+======================================== */
 
-const questions = [
+let currentLevel = Number(
+    localStorage.getItem("selectedLevel") || "1"
+);
+
+let currentQuestionIndex = Number(
+    localStorage.getItem("currentQuestion") || "0"
+);
+
+let score = Number(
+    localStorage.getItem("score") || "0"
+);
+
+
+/* ========================================
+   QUESTIONS
+======================================== */
+
+const level1Questions = [
+
+    {
+        question: "5 + 3 = ؟",
+        options: ["6", "7", "8", "9"],
+        answer: "8"
+    },
+
+    {
+        question: "9 - 4 = ؟",
+        options: ["3", "4", "5", "6"],
+        answer: "5"
+    },
+
+    {
+        question: "6 + 2 = ؟",
+        options: ["7", "8", "9", "10"],
+        answer: "8"
+    },
+
+    {
+        question: "10 - 3 = ؟",
+        options: ["5", "6", "7", "8"],
+        answer: "7"
+    },
+
+    {
+        question: "4 + 5 = ؟",
+        options: ["7", "8", "9", "10"],
+        answer: "9"
+    },
+
+    {
+        question: "8 - 2 = ؟",
+        options: ["5", "6", "7", "8"],
+        answer: "6"
+    },
+
+    {
+        question: "7 + 2 = ؟",
+        options: ["8", "9", "10", "11"],
+        answer: "9"
+    },
+
+    {
+        question: "9 - 6 = ؟",
+        options: ["2", "3", "4", "5"],
+        answer: "3"
+    },
+
+    {
+        question: "3 + 6 = ؟",
+        options: ["7", "8", "9", "10"],
+        answer: "9"
+    },
+
+    {
+        question: "10 - 5 = ؟",
+        options: ["3", "4", "5", "6"],
+        answer: "5"
+    }
+
+];
+
+
+const level2Questions = [
+
+    {
+        question: "2 × 3 = ؟",
+        options: ["4", "5", "6", "7"],
+        answer: "6"
+    },
+
+    {
+        question: "4 × 2 = ؟",
+        options: ["6", "8", "10", "12"],
+        answer: "8"
+    },
+
+    {
+        question: "5 × 3 = ؟",
+        options: ["12", "15", "18", "20"],
+        answer: "15"
+    },
+
+    {
+        question: "6 × 4 = ؟",
+        options: ["20", "22", "24", "26"],
+        answer: "24"
+    },
+
+    {
+        question: "7 × 3 = ؟",
+        options: ["18", "20", "21", "24"],
+        answer: "21"
+    },
+
+    {
+        question: "8 × 2 = ؟",
+        options: ["14", "16", "18", "20"],
+        answer: "16"
+    },
+
+    {
+        question: "9 × 3 = ؟",
+        options: ["24", "27", "30", "32"],
+        answer: "27"
+    },
+
+    {
+        question: "6 × 5 = ؟",
+        options: ["25", "30", "35", "40"],
+        answer: "30"
+    },
+
+    {
+        question: "8 × 4 = ؟",
+        options: ["28", "30", "32", "36"],
+        answer: "32"
+    },
+
+    {
+        question: "9 × 5 = ؟",
+        options: ["40", "45", "50", "55"],
+        answer: "45"
+    }
+
+];
+
+
+const level3Questions = [
 
     {
         question: "5 × 50 = ؟",
@@ -67,22 +214,99 @@ const questions = [
 ];
 
 
-// ========================================
-// المتغيرات
-// ========================================
+const level4Questions = [
 
-let currentQuestionIndex = 0;
+    {
+        question: "8 + 7 = ؟",
+        options: ["13", "14", "15", "16"],
+        answer: "15"
+    },
 
-let score = 0;
+    {
+        question: "9 × 4 = ؟",
+        options: ["32", "34", "36", "38"],
+        answer: "36"
+    },
 
-let timeLeft = 15;
+    {
+        question: "25 - X = 10 | X = ؟",
+        options: ["10", "12", "15", "20"],
+        answer: "15"
+    },
 
-let timer;
+    {
+        question: "6 × X = 42 | X = ؟",
+        options: ["5", "6", "7", "8"],
+        answer: "7"
+    },
+
+    {
+        question: "30 ÷ 5 + 4 = ؟",
+        options: ["8", "9", "10", "11"],
+        answer: "10"
+    },
+
+    {
+        question: "X + 8 = 20 | X = ؟",
+        options: ["10", "11", "12", "13"],
+        answer: "12"
+    },
+
+    {
+        question: "7 × 8 = ؟",
+        options: ["54", "56", "58", "60"],
+        answer: "56"
+    },
+
+    {
+        question: "40 - 17 = ؟",
+        options: ["21", "22", "23", "24"],
+        answer: "23"
+    },
+
+    {
+        question: "X × 3 = 27 | X = ؟",
+        options: ["7", "8", "9", "10"],
+        answer: "9"
+    },
+
+    {
+        question: "2، 6، 18، 54، X | X = ؟",
+        options: ["108", "126", "162", "216"],
+        answer: "162"
+    }
+
+];
 
 
-// ========================================
-// عناصر HTML
-// ========================================
+/* ========================================
+   SELECT LEVEL
+======================================== */
+
+let questions;
+
+if (currentLevel === 1) {
+
+    questions = level1Questions;
+
+} else if (currentLevel === 2) {
+
+    questions = level2Questions;
+
+} else if (currentLevel === 3) {
+
+    questions = level3Questions;
+
+} else {
+
+    questions = level4Questions;
+
+}
+
+
+/* ========================================
+   ELEMENTS
+======================================== */
 
 const questionElement =
     document.getElementById("question");
@@ -105,188 +329,146 @@ const scoreElement =
 const timerBox =
     document.getElementById("timerBox");
 
-
-// ========================================
-// الصوت
-// ========================================
-
-let audioContext;
+const gameAudio =
+    document.getElementById("gameAudio");
 
 
-// تشغيل نظام الصوت
-function initAudio() {
+/* ========================================
+   TIMER
+======================================== */
 
-    if (!audioContext) {
+let timeLeft = 15;
 
-        audioContext =
-            new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
+let timer;
 
+
+/* ========================================
+   AUDIO
+======================================== */
+
+let audioStarted = false;
+
+
+function startAudio() {
+
+    if (!gameAudio || audioStarted) {
+        return;
     }
 
+    gameAudio.volume = 0.5;
 
-    if (audioContext.state === "suspended") {
-
-        audioContext.resume();
-
-    }
+    gameAudio.play()
+        .then(function () {
+            audioStarted = true;
+        })
+        .catch(function () {
+            // المتصفح ممكن يمنع الصوت قبل أول ضغطة
+        });
 }
 
 
-// ========================================
-// صوت Tick
-// ========================================
+document.addEventListener(
+    "click",
+    startAudio,
+    { once: true }
+);
 
-function playTick() {
 
-    if (!audioContext) {
+/* ========================================
+   SHOW QUESTION
+======================================== */
+
+function showQuestion() {
+
+    clearInterval(timer);
+
+
+    if (currentQuestionIndex >= questions.length) {
+
+        finishLevel();
+
         return;
     }
 
 
-    const oscillator =
-        audioContext.createOscillator();
+    /*
+      حفظ مكان اللاعب مباشرة
+      حتى لو أغلق الصفحة.
+    */
 
-    const gain =
-        audioContext.createGain();
+    localStorage.setItem(
+        "currentQuestion",
+        currentQuestionIndex
+    );
 
+    localStorage.setItem(
+        "score",
+        score
+    );
 
-    oscillator.connect(gain);
-
-    gain.connect(
-        audioContext.destination
+    localStorage.setItem(
+        "selectedLevel",
+        currentLevel
     );
 
 
-    oscillator.type = "sine";
-
-
-    oscillator.frequency.setValueAtTime(
-        750,
-        audioContext.currentTime
-    );
-
-
-    gain.gain.setValueAtTime(
-        0.12,
-        audioContext.currentTime
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        audioContext.currentTime + 0.08
-    );
-
-
-    oscillator.start();
-
-
-    oscillator.stop(
-        audioContext.currentTime + 0.08
-    );
-}
-
-
-// ========================================
-// عرض السؤال
-// ========================================
-
-function showQuestion() {
-
-    // إيقاف أي مؤقت سابق
-    clearInterval(timer);
-
-
-    // تجهيز الصوت
-    initAudio();
-
-
-    // إعادة الوقت
     timeLeft = 15;
 
+    timerElement.textContent = timeLeft;
 
-    timerElement.textContent =
-        timeLeft;
-
-
-    // إعادة الحلقة إلى 100%
     timerBox.style.setProperty(
         "--progress",
         "100%"
     );
 
-
-    // إزالة حالة التحذير
-    timerBox.classList.remove(
-        "warning"
-    );
+    timerBox.classList.remove("warning");
 
 
-    // السؤال الحالي
     const currentQuestion =
         questions[currentQuestionIndex];
 
 
-    // عرض السؤال
     questionElement.textContent =
         currentQuestion.question;
 
 
-    // ⭐ مهم للمعادلات
-    // المتصفح سيحدد الاتجاه تلقائيًا:
-    // المعادلات = LTR
-    // العربي = RTL
-
-    questionElement.style.direction =
-        "auto";
-
+    questionElement.style.direction = "auto";
 
     questionElement.style.unicodeBidi =
         "plaintext";
 
 
-    // رقم السؤال
     questionNumberElement.textContent =
         `${currentQuestionIndex + 1} / ${questions.length}`;
 
 
-    // حذف الخيارات القديمة
+    scoreElement.textContent = score;
+
+
     optionsElement.innerHTML = "";
 
 
-    // إخفاء Next
-    nextButton.style.display =
-        "none";
+    nextButton.style.display = "none";
 
 
-    // إنشاء الخيارات
     currentQuestion.options.forEach(
-        function(option) {
+        function (option) {
 
             const button =
                 document.createElement("button");
 
+            button.classList.add("option-btn");
 
-            button.classList.add(
-                "option-btn"
-            );
+            button.textContent = option;
 
-
-            button.textContent =
-                option;
-
-
-            // اتجاه الخيارات الرياضية LTR
-            button.style.direction =
-                "ltr";
+            button.style.direction = "ltr";
 
 
             button.addEventListener(
                 "click",
-                function() {
+                function () {
+
+                    startAudio();
 
                     selectAnswer(
                         button,
@@ -297,29 +479,25 @@ function showQuestion() {
             );
 
 
-            optionsElement.appendChild(
-                button
-            );
+            optionsElement.appendChild(button);
 
         }
     );
 
 
-    // تشغيل المؤقت
     startTimer();
 }
 
 
-// ========================================
-// اختيار الإجابة
-// ========================================
+/* ========================================
+   SELECT ANSWER
+======================================== */
 
 function selectAnswer(
     button,
     selectedAnswer
 ) {
 
-    // إيقاف المؤقت
     clearInterval(timer);
 
 
@@ -328,14 +506,11 @@ function selectAnswer(
 
 
     const allButtons =
-        document.querySelectorAll(
-            ".option-btn"
-        );
+        document.querySelectorAll(".option-btn");
 
 
-    // منع اختيار أكثر من إجابة
     allButtons.forEach(
-        function(btn) {
+        function (btn) {
 
             btn.disabled = true;
 
@@ -343,94 +518,58 @@ function selectAnswer(
     );
 
 
-    // الإجابة الصحيحة
     if (
         selectedAnswer ===
         currentQuestion.answer
     ) {
 
-        button.classList.add(
-            "correct"
-        );
-
+        button.classList.add("correct");
 
         score++;
 
+        scoreElement.textContent = score;
 
-        scoreElement.textContent =
-            score;
-
-    }
-
-    // الإجابة الخاطئة
-    else {
-
-        button.classList.add(
-            "wrong"
+        localStorage.setItem(
+            "score",
+            score
         );
 
+    } else {
 
-        // إظهار الإجابة الصحيحة
-        allButtons.forEach(
-            function(btn) {
-
-                if (
-                    btn.textContent ===
-                    currentQuestion.answer
-                ) {
-
-                    btn.classList.add(
-                        "correct"
-                    );
-
-                }
-
-            }
-        );
+        button.classList.add("wrong");
 
     }
 
 
-    // إظهار Next
-    nextButton.style.display =
-        "block";
+    nextButton.style.display = "block";
 }
 
 
-// ========================================
-// المؤقت
-// ========================================
+/* ========================================
+   TIMER
+======================================== */
 
 function startTimer() {
 
     timer = setInterval(
-        function() {
+        function () {
 
             timeLeft--;
 
-
-            // عرض الوقت
             timerElement.textContent =
                 timeLeft;
 
 
-            // صوت Tick
-            playTick();
-
-
-            // حساب نسبة الوقت
             const progress =
                 (timeLeft / 15) * 100;
 
 
-            // تحديث الحلقة
             timerBox.style.setProperty(
                 "--progress",
                 progress + "%"
             );
 
 
-            // آخر 5 ثواني
             if (timeLeft <= 5) {
 
                 timerBox.classList.add(
@@ -440,7 +579,6 @@ function startTimer() {
             }
 
 
-            // انتهى الوقت
             if (timeLeft <= 0) {
 
                 clearInterval(timer);
@@ -455,15 +593,16 @@ function startTimer() {
 }
 
 
-// ========================================
-// انتهاء الوقت
-// ========================================
+/* ========================================
+   TIME IS UP
+======================================== */
 
 function timeIsUp() {
 
-    const currentQuestion =
-        questions[currentQuestionIndex];
-
+    /*
+      مهم:
+      ما منظهر الجواب الصحيح.
+    */
 
     const allButtons =
         document.querySelectorAll(
@@ -471,9 +610,8 @@ function timeIsUp() {
         );
 
 
-    // تعطيل الخيارات
     allButtons.forEach(
-        function(btn) {
+        function (btn) {
 
             btn.disabled = true;
 
@@ -481,72 +619,137 @@ function timeIsUp() {
     );
 
 
-    // إظهار الإجابة الصحيحة
-    allButtons.forEach(
-        function(btn) {
+    /*
+      ننتقل تلقائياً للسؤال التالي
+      بعد انتهاء الوقت.
+    */
 
-            if (
-                btn.textContent ===
-                currentQuestion.answer
-            ) {
+    setTimeout(
+        function () {
 
-                btn.classList.add(
-                    "correct"
-                );
+            goToNextQuestion();
 
-            }
-
-        }
+        },
+        400
     );
-
-
-    // إظهار Next
-    nextButton.style.display =
-        "block";
 }
 
 
-// ========================================
-// زر Next
-// ========================================
+/* ========================================
+   NEXT QUESTION
+======================================== */
 
 nextButton.addEventListener(
     "click",
-    function() {
+    function () {
 
-        currentQuestionIndex++;
+        startAudio();
 
-
-        if (
-            currentQuestionIndex <
-            questions.length
-        ) {
-
-            showQuestion();
-
-        }
-
-        else {
-
-            endGame();
-
-        }
+        goToNextQuestion();
 
     }
 );
 
 
-// ========================================
-// نهاية اللعبة
-// ========================================
-
-function endGame() {
+function goToNextQuestion() {
 
     clearInterval(timer);
 
 
+    currentQuestionIndex++;
+
+
+    localStorage.setItem(
+        "currentQuestion",
+        currentQuestionIndex
+    );
+
+
+    localStorage.setItem(
+        "score",
+        score
+    );
+
+
+    if (
+        currentQuestionIndex <
+        questions.length
+    ) {
+
+        showQuestion();
+
+    } else {
+
+        finishLevel();
+
+    }
+}
+
+
+/* ========================================
+   FINISH LEVEL
+======================================== */
+
+function finishLevel() {
+
+    clearInterval(timer);
+
+
+    const unlockedLevel =
+        Number(
+            localStorage.getItem(
+                "currentLevel"
+            ) || "1"
+        );
+
+
+    /*
+      إذا خلص المرحلة الحالية،
+      نفتح المرحلة التالية.
+    */
+
+    if (currentLevel >= unlockedLevel) {
+
+        if (currentLevel < 4) {
+
+            localStorage.setItem(
+                "currentLevel",
+                currentLevel + 1
+            );
+
+        } else {
+
+            // كل المراحل خلصت
+            localStorage.setItem(
+                "currentLevel",
+                "4"
+            );
+
+        }
+
+    }
+
+
+    /*
+      نحذف تقدم المرحلة
+      لأن اللاعب خلصها.
+    */
+
+    localStorage.removeItem(
+        "currentQuestion"
+    );
+
+    localStorage.removeItem(
+        "score"
+    );
+
+    localStorage.removeItem(
+        "selectedLevel"
+    );
+
+
     questionElement.textContent =
-        "🎉 انتهت اللعبة!";
+        "🎉 انتهت المرحلة!";
 
 
     questionElement.style.direction =
@@ -554,27 +757,49 @@ function endGame() {
 
 
     optionsElement.innerHTML = `
+
         <div class="final-score">
-            نتيجتك: ${score} / ${questions.length}
+
+            <h2>أحسنت! 🏆</h2>
+
+            <p>
+                نتيجتك:
+                ${score} / ${questions.length}
+            </p>
+
         </div>
+
     `;
 
 
-    nextButton.style.display =
-        "none";
+    nextButton.style.display = "block";
+
+    nextButton.textContent =
+        "العودة للمراحل";
 
 
-    timerElement.textContent =
-        "✓";
+    nextButton.onclick = function () {
 
+        window.location.href =
+            "levels.html";
+
+    };
+
+
+    timerElement.textContent = "✓";
 
     questionNumberElement.textContent =
-        "Game Over";
+        "انتهت المرحلة";
+
+
+    /*
+      إيقاف الصوت عند النهاية
+    */
+
+    if (gameAudio) {
+
+        gameAudio.pause();
+
+    }
+
 }
-
-
-// ========================================
-// تشغيل اللعبة
-// ========================================
-
-showQuestion();

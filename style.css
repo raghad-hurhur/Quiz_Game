@@ -1,6 +1,13 @@
 /* ========================================
+   GOOGLE FONTS
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+
+/* ========================================
    RESET
-   ======================================== */
+======================================== */
 
 * {
     box-sizing: border-box;
@@ -8,10 +15,19 @@
     padding: 0;
 }
 
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
 
 /* ========================================
-   PAGE 1 - HOME
-   ======================================== */
+   HOME PAGE
+======================================== */
 
 .home-page {
     min-height: 100vh;
@@ -22,867 +38,1353 @@
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(
-        135deg,
-        #21e2f3,
-        #21f3d0
-    );
-
-    font-family: cursive;
-
     text-align: center;
 
-    padding: 20px;
+    padding: 30px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #21e3ef 0%,
+            #20e8e4 50%,
+            #20eed8 100%
+        );
+
+    overflow: hidden;
 }
 
 
 /* ========================================
    LOGO
-   ======================================== */
+======================================== */
 
-.home-page .game-logo {
-    width: 200px;
+.logo-wrapper {
+    width: 190px;
+    height: 140px;
 
-    margin-bottom: 10px;
-
-    mix-blend-mode: multiply;
-
-    filter:
-        contrast(1.1)
-        brightness(1.05);
-}
-
-
-/* ========================================
-   TITLE
-   ======================================== */
-
-.home-page h1 {
-    color: #5bd324;
-
-    font-size: 45px;
-
-    margin-bottom: 10px;
-
-    text-shadow:
-        2px 3px 5px rgba(0, 0, 0, 0.15);
-}
-
-
-/* كلمة QUIZ */
-
-.home-page h1 span {
-    color: #ffeb3b;
-
-    font-weight: 900;
-}
-
-
-/* ========================================
-   DESCRIPTION
-   ======================================== */
-
-.home-page p {
-    color: rgb(54, 96, 255);
-
-    font-size: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     margin-bottom: 30px;
+
+    background: transparent;
+}
+
+#logoSource {
+    display: none;
+}
+
+#logoCanvas {
+    display: block;
+
+    width: 190px;
+    height: auto;
+
+    max-width: 100%;
+
+    background: transparent;
+
+    filter:
+        drop-shadow(
+            0 8px 12px rgba(0, 0, 0, 0.08)
+        );
+}
+
+
+/* ========================================
+   HOME TITLE
+======================================== */
+
+.home-page h1 {
+    font-family: 'Courgette', cursive;
+
+    font-size: 46px;
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    margin-bottom: 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5bcf42,
+            #f0cf32
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+.home-page h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #70cf3c,
+            #f5d12f
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ========================================
+   HOME SUBTITLE
+======================================== */
+
+.home-page p {
+    font-family: 'Courgette', cursive;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+    color: #356fc8;
+
+    margin-bottom: 42px;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 
 /* ========================================
    START BUTTON
-   ======================================== */
+======================================== */
 
-.home-page .start-btn {
-    background-color: #ffb800;
+.start-btn {
+    width: 280px;
 
-    color: #121212;
+    padding: 19px 25px;
 
     border: none;
 
-    padding: 14px 40px;
+    border-radius: 50px;
 
-    border-radius: 30px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffbe12,
+            #ffae00
+        );
 
-    font-size: 18px;
+    color: #111827;
 
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-        0 5px 15px rgba(255, 184, 0, 0.4);
+        0 8px 18px rgba(255, 165, 0, 0.28);
 
     transition:
-        transform 0.25s ease,
-        background-color 0.25s ease,
-        box-shadow 0.25s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
-.home-page .start-btn:hover {
-    transform:
-        translateY(-4px)
-        scale(1.03);
-
-    background-color: #e5a500;
+.start-btn:hover {
+    transform: translateY(-4px);
 
     box-shadow:
-        0 8px 20px rgba(255, 184, 0, 0.5);
+        0 12px 25px rgba(255, 165, 0, 0.35);
+}
+
+
+.start-btn:active {
+    transform: scale(0.97);
 }
 
 
 /* ========================================
    EXIT BUTTON
-   ======================================== */
+======================================== */
 
-.home-page .exit-btn {
-    background-color: rgb(233, 30, 30);
+.exit-btn {
+    width: 160px;
 
-    color: white;
+    padding: 15px 25px;
+
+    margin-top: 18px;
 
     border: none;
 
-    padding: 11px 35px;
+    border-radius: 50px;
 
-    border-radius: 30px;
+    background:
+        linear-gradient(
+            135deg,
+            #ef2424,
+            #e71919
+        );
 
-    font-size: 16px;
+    color: white;
 
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
-    margin-top: 15px;
+    box-shadow:
+        0 7px 15px rgba(220, 30, 30, 0.2);
 
     transition:
-        transform 0.25s ease,
-        background-color 0.25s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
-.home-page .exit-btn:hover {
+.exit-btn:hover {
     transform: translateY(-3px);
 
-    background-color: rgb(180, 15, 15);
+    box-shadow:
+        0 10px 20px rgba(220, 30, 30, 0.28);
 }
 
 
 /* ========================================
-   PAGE 2 - QUIZ
-   ======================================== */
+   NAME PAGE
+======================================== */
 
-.quiz-page {
+.name-page {
     min-height: 100vh;
 
     display: flex;
 
+    align-items: center;
     justify-content: center;
-
-    align-items: center;
-
-    font-family: Arial, sans-serif;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #304b6b 0%,
-            #18283d 40%,
-            #0b111b 100%
-        );
-
-    color: white;
-
-    padding: 20px;
-}
-
-
-/* ========================================
-   QUIZ CONTAINER
-   ======================================== */
-
-.quiz-page .quiz-container {
-    width: 90%;
-
-    max-width: 650px;
-
-    padding: 30px;
-
-    border-radius: 25px;
-
-    background:
-        rgba(255, 255, 255, 0.09);
-
-    backdrop-filter: blur(15px);
-
-    -webkit-backdrop-filter: blur(15px);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.12);
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.45);
-
-    text-align: center;
-}
-
-
-/* ========================================
-   TOP BAR
-   ======================================== */
-
-.quiz-page .top-bar {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 25px;
-
-    font-size: 18px;
-
-    font-weight: bold;
-}
-
-
-/* ========================================
-   CIRCULAR TIMER
-   ======================================== */
-
-.quiz-page .timer-box {
-
-    /*
-       JavaScript يغيّر هذه القيمة
-       من 100% إلى 0%
-    */
-
-    --progress: 100%;
-
-
-    width: 190px;
-
-    height: 190px;
-
-    margin:
-        0 auto 30px;
-
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-
-    /*
-       الحلقة الخارجية
-    */
-
-    background:
-        conic-gradient(
-            from 0deg,
-
-            #00d9ff 0%,
-
-            #304ffe 25%,
-
-            #7b2cff 50%,
-
-            #ff00a8 70%,
-
-            #ff0055 var(--progress),
-
-            #292929 var(--progress)
-        );
-
-
-    position: relative;
-
-
-    /*
-       حركة ناعمة للحلقة
-    */
-
-    transition:
-        background 0.3s linear;
-
-
-    /*
-       إضاءة حول الحلقة
-    */
-
-    box-shadow:
-        0 0 20px rgba(0, 217, 255, 0.25),
-        0 0 40px rgba(213, 0, 249, 0.12);
-}
-
-
-/* ========================================
-   INNER TIMER CIRCLE
-   ======================================== */
-
-.quiz-page .timer-circle {
-
-    width: 166px;
-
-    height: 166px;
-
-    border-radius: 50%;
-
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-
-    /*
-       الدائرة السوداء الداخلية
-    */
-
-    background:
-        radial-gradient(
-            circle,
-            #111111 0%,
-            #050505 100%
-        );
-
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(255, 255, 255, 0.06);
-}
-
-
-/* ========================================
-   TIMER NUMBER
-   ======================================== */
-
-.quiz-page #timer {
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 58px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-
-    /*
-       الأرقام دائمًا من اليسار لليمين
-    */
-
-    direction: ltr;
-
-    unicode-bidi: isolate;
-
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-/* ========================================
-   LAST 5 SECONDS
-   ======================================== */
-
-.quiz-page .timer-box.warning {
-
-    animation:
-        timerPulse 0.7s infinite;
-
-
-    box-shadow:
-        0 0 25px rgba(255, 0, 70, 0.45),
-        0 0 50px rgba(255, 0, 70, 0.2);
-}
-
-
-.quiz-page .timer-box.warning #timer {
-
-    color: #ff3d5a;
-
-    transform: scale(1.08);
-}
-
-
-/* ========================================
-   TIMER PULSE
-   ======================================== */
-
-@keyframes timerPulse {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.04);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-
-/* ========================================
-   QUESTION
-   ======================================== */
-
-.quiz-page .question-box {
-
-    min-height: 110px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 25px;
-
-    padding: 20px;
-
-    border-radius: 18px;
-
-
-    background:
-        rgba(0, 0, 0, 0.25);
-
-
-    border:
-        1px solid rgba(255, 255, 255, 0.05);
-
-
-    box-shadow:
-        inset 0 0 15px
-        rgba(0, 0, 0, 0.15);
-}
-
-
-/* ========================================
-   QUESTION TEXT
-   ======================================== */
-
-.quiz-page .question-box h2 {
-
-    width: 100%;
-
-    font-size: 26px;
-
-    line-height: 1.6;
 
     text-align: center;
 
+    padding: 25px;
 
-    /*
-       مهم جدًا للمعادلات.
+    background:
+        linear-gradient(
+            135deg,
+            #21e3ef,
+            #20e8e4,
+            #20eed8
+        );
 
-       بما أن الصفحة عربية RTL،
-       هذا يسمح للمتصفح باكتشاف
-       اتجاه النص تلقائيًا.
-    */
-
-    direction: auto;
-
-    unicode-bidi: plaintext;
-
-
-    font-family:
-        Arial,
-        sans-serif;
+    color: #243b53;
 }
 
 
 /*
-   هذا مهم أيضًا للنصوص الرياضية
+   صفحة الاسم بدون مربع أبيض
 */
 
-.quiz-page .question-box h2::first-letter {
-    unicode-bidi: plaintext;
-}
+.name-container {
+    width: 100%;
 
+    max-width: 500px;
 
-/* ========================================
-   OPTIONS
-   ======================================== */
+    padding: 30px;
 
-.quiz-page .options {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 15px;
-}
-
-
-/* ========================================
-   OPTION BUTTON
-   ======================================== */
-
-.quiz-page .option-btn {
-
-    padding: 17px;
-
-    min-height: 58px;
+    background: transparent;
 
     border: none;
 
-    border-radius: 15px;
+    box-shadow: none;
+
+    text-align: center;
+}
+
+
+.name-icon {
+    font-size: 65px;
+
+    margin-bottom: 15px;
+}
+
+
+.name-container h1 {
+    font-family: 'Courgette', cursive;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    color: #356fc8;
+
+    margin-bottom: 12px;
+}
+
+
+.name-container p {
+    font-family: 'Courgette', cursive;
+
+    font-size: 23px;
+
+    color: #356fc8;
+
+    margin-bottom: 28px;
+}
+
+
+/* ========================================
+   NAME INPUT
+======================================== */
+
+#playerName {
+    width: 100%;
+
+    max-width: 430px;
+
+    height: 62px;
+
+    padding: 0 25px;
+
+    border: 3px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 50px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    color: #243b53;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 19px;
+
+    text-align: center;
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 18px;
+
+    transition: 0.2s ease;
+}
+
+
+#playerName::placeholder {
+    color: #7a8797;
+}
+
+
+#playerName:focus {
+    border-color: #ffd43b;
 
     background: white;
 
-    color: #222;
+    box-shadow:
+        0 0 0 4px rgba(255, 212, 59, 0.18),
+        0 8px 20px rgba(0, 0, 0, 0.1);
+}
 
-    font-size: 18px;
 
-    font-weight: bold;
+/* ========================================
+   CONTINUE BUTTON
+======================================== */
+
+.continue-btn {
+    width: 100%;
+
+    max-width: 430px;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffbe12,
+            #ffae00
+        );
+
+    color: #172033;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
+    box-shadow:
+        0 8px 18px rgba(255, 165, 0, 0.25);
 
-    /*
-       الخيارات الرياضية
-       من اليسار لليمين
-    */
+    transition:
+        transform 0.2s ease;
+}
 
-    direction: ltr;
 
-    unicode-bidi: isolate;
+.continue-btn:hover {
+    transform: translateY(-3px);
+}
 
+
+/* ========================================
+   LEVELS PAGE
+======================================== */
+
+.levels-page {
+    min-height: 100vh;
+
+    padding: 35px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #21e3ef,
+            #20e8e4,
+            #20eed8
+        );
+
+    color: #243b53;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.levels-container {
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+
+/* ========================================
+   WELCOME BOX
+======================================== */
+
+.welcome-box {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.welcome-box span {
+    display: block;
+
+    font-size: 50px;
+
+    margin-bottom: 8px;
+}
+
+
+.welcome-box h1 {
+    font-family: 'Courgette', cursive;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    color: #356fc8;
+
+    margin-bottom: 8px;
+}
+
+
+.welcome-box p {
+    font-family: 'Courgette', cursive;
+
+    color: #356fc8;
+
+    font-size: 21px;
+}
+
+
+/* ========================================
+   LEVELS LIST
+======================================== */
+
+.levels-list {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* ========================================
+   LEVEL CARD
+======================================== */
+
+.level-card {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border:
+        2px solid rgba(255, 255, 255, 0.7);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
 
     transition:
         transform 0.2s ease,
-        background-color 0.2s ease,
         box-shadow 0.2s ease;
-
-
-    box-shadow:
-        0 5px 12px
-        rgba(0, 0, 0, 0.15);
 }
 
 
-/* ========================================
-   OPTION HOVER
-   ======================================== */
-
-.quiz-page .option-btn:hover:not(:disabled) {
-
-    transform:
-        translateY(-4px);
-
-    background: #eeeeee;
-
-    box-shadow:
-        0 8px 18px
-        rgba(0, 0, 0, 0.2);
+.level-card.unlocked {
+    cursor: pointer;
 }
 
 
-/* ========================================
-   DISABLED
-   ======================================== */
+.level-card.unlocked:hover {
+    transform: translateY(-4px);
 
-.quiz-page .option-btn:disabled {
+    box-shadow:
+        0 13px 25px rgba(0, 0, 0, 0.16);
+}
+
+
+.level-card.locked {
+    opacity: 0.55;
 
     cursor: not-allowed;
 }
 
 
 /* ========================================
-   CORRECT ANSWER
-   ======================================== */
+   LEVEL ICON
+======================================== */
 
-.quiz-page .option-btn.correct {
+.level-icon {
+    width: 70px;
+    height: 70px;
 
-    background: #35d07f;
+    flex-shrink: 0;
 
-    color: white;
+    display: flex;
 
-    transform: scale(1.02);
+    align-items: center;
+    justify-content: center;
 
-    box-shadow:
-        0 5px 15px
-        rgba(53, 208, 127, 0.45);
-}
+    border-radius: 50%;
 
+    background:
+        linear-gradient(
+            135deg,
+            #ffd43b,
+            #ffb703
+        );
 
-/* ========================================
-   WRONG ANSWER
-   ======================================== */
-
-.quiz-page .option-btn.wrong {
-
-    background: #ff4d67;
-
-    color: white;
+    font-size: 36px;
 
     box-shadow:
-        0 5px 15px
-        rgba(255, 77, 103, 0.45);
-
-
-    animation:
-        wrongShake 0.3s ease;
+        0 5px 12px rgba(255, 183, 3, 0.2);
 }
 
 
 /* ========================================
-   WRONG ANSWER ANIMATION
-   ======================================== */
+   LEVEL INFO
+======================================== */
 
-@keyframes wrongShake {
+.level-info {
+    flex: 1;
 
-    0% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-5px);
-    }
-
-    50% {
-        transform: translateX(5px);
-    }
-
-    75% {
-        transform: translateX(-4px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+    min-width: 0;
 }
 
 
-/* ========================================
-   NEXT BUTTON
-   ======================================== */
+.level-info h2 {
+    color: #243b53;
 
-.quiz-page .next-btn {
+    font-size: 22px;
 
-    width: 100%;
+    margin-bottom: 4px;
+}
 
-    margin-top: 25px;
 
-    padding: 16px;
-
-    border: none;
-
-    border-radius: 15px;
-
-    background: #ffb800;
-
-    color: #182536;
+.level-info h3 {
+    color: #356fc8;
 
     font-size: 18px;
 
+    margin-bottom: 5px;
+}
+
+
+.level-info p {
+    color: #667085;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   STARS
+======================================== */
+
+.stars {
+    font-size: 22px;
+
+    white-space: nowrap;
+
+    color: #ffc107;
+}
+
+
+/* ========================================
+   LOCK
+======================================== */
+
+.lock {
+    font-size: 25px;
+
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   BACK HOME
+======================================== */
+
+.back-home-btn {
+    display: block;
+
+    margin: 28px auto 0;
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: #ef2424;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.back-home-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   QUIZ PAGE
+======================================== */
+
+.quiz-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #21e3ef,
+            #20e8e4,
+            #20eed8
+        );
+
+    color: #243b53;
+}
+
+
+.quiz-container {
+    width: 100%;
+
+    max-width: 750px;
+
+    padding: 25px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ========================================
+   TOP BAR
+======================================== */
+
+.top-bar {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 13px 17px;
+
+    margin-bottom: 20px;
+
+    border-radius: 18px;
+
+    background: #356fc8;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+#score {
+    color: #ffd43b;
+}
+
+
+/* ========================================
+   PLAYER INFO
+======================================== */
+
+.quiz-page .player-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    padding: 10px 15px;
+
+    border-radius: 15px;
+
+    background: #eefcff;
+
+    color: #356fc8;
+
+    font-size: 15px;
+
     font-weight: bold;
+}
+
+
+.quiz-page .player-info span:last-child {
+    color: #ffad00;
+}
+
+
+/* ========================================
+   TIMER
+======================================== */
+
+.timer-box {
+    --progress: 100%;
+
+    width: 115px;
+    height: 115px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #21cfd0 var(--progress),
+            #dceff0 0
+        );
+
+    position: relative;
+}
+
+
+.timer-circle {
+    width: 91px;
+    height: 91px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+#timer {
+    font-size: 31px;
+
+    font-weight: 700;
+
+    color: #356fc8;
+}
+
+
+.timer-box.warning {
+    background:
+        conic-gradient(
+            #ef2424 var(--progress),
+            #f5dddd 0
+        );
+
+    animation:
+        timerWarning 0.8s infinite alternate;
+}
+
+
+.timer-box.warning #timer {
+    color: #ef2424;
+}
+
+
+@keyframes timerWarning {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
+
+}
+
+
+/* ========================================
+   QUESTION BOX
+======================================== */
+
+.question-box {
+    width: 100%;
+
+    min-height: 120px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7ffff,
+            #ffffff
+        );
+
+    border:
+        2px solid #d7f5f5;
+
+    text-align: center;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+#question {
+    width: 100%;
+
+    font-family: 'Poppins', Arial, sans-serif;
+
+    font-size: 28px;
+
+    line-height: 1.5;
+
+    color: #243b53;
+
+    font-weight: 700;
+
+    direction: auto;
+
+    unicode-bidi: plaintext;
+}
+
+
+/* ========================================
+   OPTIONS
+======================================== */
+
+#options.options {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+
+    margin-bottom: 18px;
+}
+
+
+.option-btn {
+    width: 100%;
+
+    min-height: 58px;
+
+    padding: 14px 20px;
+
+    border:
+        2px solid #d7eeee;
+
+    border-radius: 18px;
+
+    background: white;
+
+    color: #356fc8;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
     transition:
         transform 0.2s ease,
-        background-color 0.2s ease;
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
 
-    display: none;
 
-    box-shadow:
-        0 5px 15px
-        rgba(255, 184, 0, 0.3);
+.option-btn:hover:not(:disabled) {
+    transform: translateX(-4px);
+
+    border-color: #21d9d0;
+
+    background: #efffff;
+}
+
+
+.option-btn:disabled {
+    cursor: not-allowed;
+}
+
+
+/* Correct */
+
+.option-btn.correct {
+    background: #22c55e !important;
+
+    border-color: #16a34a !important;
+
+    color: white !important;
+}
+
+
+/* Wrong */
+
+.option-btn.wrong {
+    background: #ef4444 !important;
+
+    border-color: #dc2626 !important;
+
+    color: white !important;
 }
 
 
 /* ========================================
-   NEXT HOVER
-   ======================================== */
+   NEXT BUTTON
+======================================== */
 
-.quiz-page .next-btn:hover {
+.next-btn {
+    width: 100%;
 
-    transform:
-        translateY(-3px);
+    padding: 16px;
 
-    background: #e5a500;
+    border: none;
 
-    box-shadow:
-        0 8px 18px
-        rgba(255, 184, 0, 0.4);
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffbe12,
+            #ffae00
+        );
+
+    color: #172033;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.next-btn:hover {
+    transform: translateY(-3px);
 }
 
 
 /* ========================================
    FINAL SCORE
-   ======================================== */
+======================================== */
 
-.quiz-page .final-score {
+.final-score {
+    width: 100%;
 
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: #356fc8;
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   LEVEL RESULT
+======================================== */
+
+.level-result {
     padding: 25px;
 
-    font-size: 28px;
+    border-radius: 22px;
 
-    font-weight: bold;
+    background: #eefcff;
 
-    border-radius: 18px;
+    text-align: center;
+}
 
-    background:
-        rgba(255, 255, 255, 0.1);
 
-    border:
-        1px solid rgba(255, 255, 255, 0.1);
+.level-result h2 {
+    font-size: 27px;
 
-    box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.2);
+    color: #356fc8;
+
+    margin-bottom: 15px;
+}
+
+
+.level-result p {
+    margin: 8px 0;
+
+    color: #667085;
+}
+
+
+.level-result strong {
+    display: block;
+
+    font-size: 42px;
+
+    color: #ffb703;
+
+    margin: 10px 0;
 }
 
 
 /* ========================================
    MOBILE
-   ======================================== */
+======================================== */
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+
+    /* HOME */
+
+    .home-page {
+        padding: 20px 15px;
+    }
 
 
-    /* الصفحة الرئيسية */
+    .logo-wrapper {
+        width: 165px;
+        height: 125px;
+
+        margin-bottom: 28px;
+    }
+
+
+    #logoCanvas {
+        width: 165px;
+    }
+
 
     .home-page h1 {
-
-        font-size: 34px;
+        font-size: 35px;
     }
 
 
     .home-page p {
+        font-size: 23px;
 
-        font-size: 21px;
+        margin-bottom: 35px;
     }
 
 
-    .home-page .game-logo {
+    .start-btn {
+        width: 280px;
 
+        font-size: 20px;
+    }
+
+
+    .exit-btn {
         width: 160px;
     }
 
 
-    /* اللعبة */
+    /* NAME */
 
-    .quiz-page {
-
-        padding: 12px;
+    .name-container {
+        padding: 20px;
     }
 
 
-    .quiz-page .quiz-container {
-
-        width: 100%;
-
-        padding: 20px 15px;
-
-        border-radius: 20px;
+    .name-container h1 {
+        font-size: 32px;
     }
 
 
-    /* الشريط العلوي */
-
-    .quiz-page .top-bar {
-
-        font-size: 16px;
-
-        margin-bottom: 20px;
+    .name-container p {
+        font-size: 20px;
     }
 
 
-    /* المؤقت */
-
-    .quiz-page .timer-box {
-
-        width: 170px;
-
-        height: 170px;
-
-        margin-bottom: 25px;
-    }
-
-
-    .quiz-page .timer-circle {
-
-        width: 148px;
-
-        height: 148px;
-    }
-
-
-    .quiz-page #timer {
-
-        font-size: 52px;
-    }
-
-
-    /* السؤال */
-
-    .quiz-page .question-box {
-
-        min-height: 100px;
-
-        padding: 15px;
-    }
-
-
-    .quiz-page .question-box h2 {
-
-        font-size: 21px;
-
-        line-height: 1.5;
-    }
-
-
-    /* الخيارات */
-
-    .quiz-page .options {
-
-        grid-template-columns: 1fr;
-
-        gap: 12px;
-    }
-
-
-    .quiz-page .option-btn {
-
-        padding: 15px;
-
-        min-height: 52px;
+    #playerName {
+        height: 58px;
 
         font-size: 17px;
     }
 
 
-    /* Next */
+    /* LEVELS */
 
-    .quiz-page .next-btn {
+    .levels-page {
+        padding: 25px 12px;
+    }
 
+
+    .welcome-box h1 {
+        font-size: 30px;
+    }
+
+
+    .welcome-box p {
+        font-size: 18px;
+    }
+
+
+    .level-card {
         padding: 15px;
+
+        gap: 11px;
     }
 
 
-    /* النتيجة */
+    .level-icon {
+        width: 55px;
+        height: 55px;
 
-    .quiz-page .final-score {
-
-        font-size: 24px;
-
-        padding: 20px;
+        font-size: 27px;
     }
+
+
+    .level-info h2 {
+        font-size: 18px;
+    }
+
+
+    .level-info h3 {
+        font-size: 15px;
+    }
+
+
+    .level-info p {
+        font-size: 12px;
+    }
+
+
+    .stars {
+        font-size: 16px;
+    }
+
+
+    .lock {
+        font-size: 20px;
+    }
+
+
+    /* QUIZ */
+
+    .quiz-page {
+        padding: 12px;
+    }
+
+
+    .quiz-container {
+        padding: 18px;
+
+        border-radius: 22px;
+    }
+
+
+    .top-bar {
+        font-size: 14px;
+    }
+
+
+    #question {
+        font-size: 22px;
+    }
+
+
+    .question-box {
+        padding: 18px;
+
+        min-height: 105px;
+    }
+
+
+    .option-btn {
+        min-height: 52px;
+
+        font-size: 18px;
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 380px) {
+
+    .logo-wrapper {
+        width: 140px;
+        height: 110px;
+    }
+
+
+    #logoCanvas {
+        width: 140px;
+    }
+
+
+    .home-page h1 {
+        font-size: 30px;
+    }
+
+
+    .home-page p {
+        font-size: 20px;
+    }
+
+
+    .start-btn {
+        width: 250px;
+
+        padding: 16px;
+    }
+
+
+    .quiz-container {
+        padding: 14px;
+    }
+
+
+    #question {
+        font-size: 20px;
+    }
+
+
+    .option-btn {
+        font-size: 17px;
+    }
+
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.game-logo {
+    width: 220px;
+    height: auto;
+    display: block;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    object-fit: contain;
 }
